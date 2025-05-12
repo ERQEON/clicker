@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>TM Clicker</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        font-family: sans-serif;
+      }
+      .clickable-image {
+        display: block;
+        margin: 20px auto;
+        width: 350px;
+        height: auto;
+        cursor: pointer;
+        transition: transform 0.1s ease-out;
+        border: 2px solid transparent;
+      }
+
+      .clickable-image:active {
+        transform: scale(0.95);
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2em;
+      }
+
+      #click-count {
+        color: #a838c7;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+     Click: <span id="click-count">0</span>
+   </h1>
+    <img src="/photo.jpg" class="clickable-image" id="main-image" alt="image">
+
+    <script>
+      const imageToClick = document.getElementById('main-image');
+      const clickCountDisplay = document.getElementById('click-count');
+
+      let clicks = 0;
+
+      function handleImageClick() {
+        clicks++;
+        clickCountDisplay.textContent = clicks;
+      }
+
+      if (imageToClick) {
+        imageToClick.addEventListener('click', handleImageClick);
+      } else {
+        console.error("Изображение с id 'main-image' не найдено!");
+      }
+    </script>
+  </body>
+</html>
